@@ -1,6 +1,6 @@
 package com.im.config;
 
-import com.im.controller.common.Result;
+import com.im.common.Result;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

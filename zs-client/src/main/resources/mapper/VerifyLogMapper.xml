@@ -2,4 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.im.mapper.VerifyLogMapper">
 
+    <select id="getLastCode" resultType="com.im.entity.VerifyLog">
+        select *
+        from im_verify_log
+        where register_account = #{registerAccount}
+        and type = #{type}
+        order by create_time DESC
+        limit 1
+    </select>
 </mapper>

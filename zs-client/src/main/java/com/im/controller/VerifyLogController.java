@@ -1,6 +1,16 @@
 package com.im.controller;
 
 
+import com.im.common.Result;
+import com.im.entity.VerifyLog;
+import com.im.service.VerifyLogService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +25,21 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/verifyLog")
+@Api(tags = "验证码控制器")
 public class VerifyLogController {
 
+    @Autowired
+    private VerifyLogService verifyLogService;
+
+    /**
+     * 验证验证码是否正确
+     * @param verifyLog
+     * @return
+     */
+    @PostMapping("/verifyLastCode")
+    @ApiOperation(value = "验证验证码是否正确",notes = "验证验证码是否可用，必须参数registerAccount,type,verifyCode")
+    public Result verifyLastCode(@RequestBody VerifyLog verifyLog){
+        return  verifyLogService.verifyLastCode(verifyLog);
+    }
 }
 

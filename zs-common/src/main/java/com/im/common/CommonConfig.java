@@ -1,4 +1,4 @@
-package com.im.controller.common;
+package com.im.common;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;

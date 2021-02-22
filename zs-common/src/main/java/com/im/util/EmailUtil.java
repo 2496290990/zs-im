@@ -1,10 +1,9 @@
-package com.im.controller.util;
+package com.im.util;
 
 import cn.hutool.extra.mail.MailUtil;
-import com.im.controller.entity.Email;
+import com.im.entity.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
@@ -60,7 +59,7 @@ public class EmailUtil {
         return code;
     }
 
-    public String sendEmail(Email email,boolean flag) throws MessagingException, IOException {
+    public String sendEmail(Email email,boolean flag)  {
 
         //加载模板数据到邮件模板中
         Context context = new Context();
@@ -69,7 +68,6 @@ public class EmailUtil {
         String code = getCode();
         context.setVariable("code", code);
         String process = templateEngine.process("mail.html", context);
-        System.out.println(process);
         MailUtil.send(email.getSendTo(), email.getSubject(), process, null, true, null);
         return code;
     }

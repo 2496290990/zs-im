@@ -10,10 +10,6 @@ import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.eleven.config.TemplateConfig;
-import org.omg.CORBA.IDLType;
-
-import javax.sql.DataSource;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;

@@ -13,4 +13,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface VerifyLogMapper extends BaseMapper<VerifyLog> {
 
+    /**
+     * 获取最后一个验证码
+     * @param verifyLog
+     * @return
+     */
+    VerifyLog getLastCode(VerifyLog verifyLog);
 }

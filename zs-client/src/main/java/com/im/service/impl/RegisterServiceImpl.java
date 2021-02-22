@@ -1,16 +1,12 @@
 package com.im.service.impl;
 
-import cn.hutool.extra.mail.MailUtil;
-import com.im.controller.entity.Email;
-import com.im.controller.util.EmailUtil;
+import com.im.entity.Email;
+import com.im.util.EmailUtil;
 import com.im.entity.Test;
 import com.im.mapper.RegisterMapper;
 import com.im.service.RegisterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.mail.MessagingException;
-import java.io.IOException;
 
 /**
  * @author zhaojinhui
@@ -32,11 +28,17 @@ public class RegisterServiceImpl implements RegisterService {
      * @date  2021年2月20日12:14:31
      */
     @Override
-    public String emailRegister(String emailAddress) throws Exception {
+    public String emailRegister(String emailAddress){
         Email email = new Email();
         email.setSendTo(emailAddress);
         email.setSubject("校友邦注册邮件");
-        return emailUtil.sendEmail(email, true);
+        try{
+            return emailUtil.sendEmail(email, true);
+        }catch(Exception e){
+            e.printStackTrace();
+            return "false";
+        }
+
     }
 
     @Override

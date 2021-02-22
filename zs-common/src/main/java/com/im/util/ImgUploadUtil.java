@@ -1,10 +1,10 @@
-package com.im.controller.util;
+package com.im.util;
 
 
 import cn.hutool.http.ContentType;
 import cn.hutool.http.HttpRequest;
 import com.google.gson.Gson;
-import com.im.controller.entity.ImgUploadOss;
+import com.im.entity.ImgUploadOss;
 import org.apache.commons.io.FileUtils;
 import org.springframework.web.multipart.MultipartFile;
 

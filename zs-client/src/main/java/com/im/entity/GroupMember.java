@@ -2,6 +2,8 @@ package com.im.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.FieldFill;
@@ -48,7 +50,7 @@ private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "加入时间")
     @TableField(fill = FieldFill.INSERT)
-    private Date createTime;
+    private LocalDateTime createTime;
 
     private String by1;
 

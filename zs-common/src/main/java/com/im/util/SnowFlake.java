@@ -1,4 +1,4 @@
-package com.im.controller.util;
+package com.im.util;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RandomUtils;

@@ -1,4 +1,4 @@
-package com.im.controller.common;
+package com.im.common;
 
 
 import lombok.Data;
@@ -18,7 +18,6 @@ public class Result<T> implements Serializable {
 
     private String msg = "success";
 
-    private Object object;
 
     private int code = SUCCESS;
 
@@ -45,11 +44,10 @@ public class Result<T> implements Serializable {
         this.code = FAIL;
     }
 
-    public Result(T data, String msg, Object object, int code) {
+    public Result(int code, String msg,T data) {
         super();
         this.data = data;
         this.msg = msg;
-        this.object = object;
         this.code = code;
     }
 

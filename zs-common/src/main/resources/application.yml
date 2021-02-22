@@ -1,0 +1,61 @@
+spring:
+  mail:
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    password: mqyxtwbsffzqeaae
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+            port: 465
+          ssl:
+            enable: true
+          starttls:
+            enable: true
+            required: true
+    protocol: smtp
+    username: 2496290990@163.com
+# 以上为网易邮箱设置
+#spring:
+#  mail:
+#    default-encoding: UTF-8
+#    host: smtp.163.com
+#    password: ZNLQTDHMYANRQUGB
+#    #port: 465
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          socketFactory:
+#            class: javax.net.ssl.SSLSocketFactory
+#            port: 465
+#          ssl:
+#            enable: true
+#          starttls:
+#            enable: true
+#            required: true
+#    protocol: smtp
+#    username: hchain_hqt@163.com
+#spring:
+#  mail:
+#    host: smtp.163.com
+#    username: hchain_hqt@163.com
+#    password: ZNLQTDHMYANRQUGB
+#    default-encoding: UTF-8
+##    properties:
+##      mail:
+##        smtp:
+##          socketFactory:
+##            class: javax.net.ssl.SSLSocketFactory
+##            port: 465
+#    port: 465
+#    properties:
+
+
+
+
+
+

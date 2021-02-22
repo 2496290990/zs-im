@@ -1,0 +1,21 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: code-generator
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///zs_im?serverTimezone=UTC
+    username: root
+    password: dream
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 10
+      max-active: 20
+      max-wait: 60
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

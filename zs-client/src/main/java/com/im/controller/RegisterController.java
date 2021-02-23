@@ -32,25 +32,7 @@ public class RegisterController {
 
     @Autowired
     private VerifyLogService verifyLogService;
-
-    /**
-     * 发送注册用验证码
-     * @param verifyLog 验证码实体类，registerAccount必填
-     * @return
-     * @throws Exception
-     */
-    @PostMapping("/sendEmail")
-    @ApiOperation(value = "发送注册邮件",notes = "发送注册所用的验证码，并存库处理，registerAccount 字段必填")
-    public Result emailRegister(@RequestBody VerifyLog verifyLog) throws Exception {
-
-        String code = registerService.emailRegister(verifyLog.getRegisterAccount());
-        if(!StrUtil.equals(code,"false")){
-            verifyLog.setVerifyCode(code);
-            verifyLogService.saveEmailCode(verifyLog);
-        }
-        return ResultFactory.success(code);
-    }
-
+    
     /**
      * 根据注册填写的手机号或者是邮箱，判断该账号是否已经注册过了
      * @param subject 要注册的账号主体
@@ -60,5 +42,18 @@ public class RegisterController {
     @ApiOperation(value = "校验手机号或者邮箱是否注册过",notes = "校验手机号是否被注册过")
     public Result verifySame(@PathVariable("subject") String subject){
         return userService.verifySameByRegisterSubject(subject);
+    }
+
+    @GetMapping("/{email}")
+    @ApiOperation(value = "发送邮箱验证码" )
+    public Result sendEmail(@PathVariable("email")String email) throws Exception {
+        VerifyLog verifyLog = new VerifyLog();
+        verifyLog.setRegisterAccount(email);
+        String code = registerService.emailRegister(email);
+        if(!StrUtil.equals(code,"false")){
+            verifyLog.setVerifyCode(code);
+            verifyLogService.saveEmailCode(verifyLog);
+        }
+        return ResultFactory.success(email);
     }
 }

@@ -8,6 +8,16 @@ spring:
     password: dream
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    format:
+      date-time: yyyy-MM-dd HH:mm:ss
+      date: yyyy-MM-dd
+  jackson:
+    date-format: java.text.SimpleDateFormat
+  security:
+    user:
+      name: admin
+      password: admin
 mybatis-plus:
   configuration:
     call-setters-on-nulls: true

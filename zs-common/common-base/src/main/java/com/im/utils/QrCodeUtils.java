@@ -1,4 +1,4 @@
-package com.im.util;
+package com.im.utils;
 
 import cn.hutool.extra.qrcode.QrCodeUtil;
 import cn.hutool.extra.qrcode.QrConfig;

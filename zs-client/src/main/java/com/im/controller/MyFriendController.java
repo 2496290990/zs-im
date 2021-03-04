@@ -1,7 +1,12 @@
 package com.im.controller;
 
 
+import com.im.common.Result;
+import com.im.entity.MyFriend;
+import com.im.service.MyFriendService;
 import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/myFriend")
-@Api("好友列表")
+@Api(tags = "好友列表")
 public class MyFriendController {
 
+    @Autowired
+    private MyFriendService myFriendService;
+
+    @GetMapping("/query")
+    public Result queryMyFriend(){
+        return myFriendService.queryMyFriend();
+    }
 }
 

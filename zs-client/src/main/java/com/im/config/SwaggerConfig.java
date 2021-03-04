@@ -30,7 +30,7 @@ public class SwaggerConfig {
     }
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("SpringBoot利用Swagger构建API文档")
+                .title("校友邦客户端API文档")
                 .description("使用RestFul风格, 创建人：eleven")
                 .version("v1")
                 .build();

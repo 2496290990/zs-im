@@ -56,10 +56,12 @@ private static final long serialVersionUID=1L;
     private LocalDateTime createTime;
 
     @ApiModelProperty(value = "0删除 1展示")
+    /** 发送人是否删除聊天记录 */
     private String sendDel;
 
     @ApiModelProperty(value = "0删除1展示")
-    private String reciveDel;
+    /** 发送人是否删除聊天记录 */
+    private String receiveDel;
 
     @ApiModelProperty(value = "文件地址")
     private String url;

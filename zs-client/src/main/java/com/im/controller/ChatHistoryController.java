@@ -1,11 +1,13 @@
 package com.im.controller;
 
 
+import com.im.common.Result;
+import com.im.entity.ChatHistory;
+import com.im.service.ChatHistoryService;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -17,8 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/chatHistory")
-@Api("聊天历史记录")
+@Api(tags = "聊天历史记录")
 public class ChatHistoryController {
 
+    @Autowired
+    private ChatHistoryService chatHistoryService;
+
+    @PostMapping("/private")
+    @ApiOperation(value = "查询私聊聊天记录" ,tags = "查询当前登录人的私聊聊天记录")
+    public Result queryPrivateChatHistory(@RequestBody ChatHistory chatHistory){
+        return chatHistoryService.queryPrivateChatHistory(chatHistory);
+    }
+
+    @PostMapping("/sendChat")
+    @ApiOperation(value = "发送聊天记录" )
+    public Result sendChat(@RequestBody ChatHistory chatHistory){
+        return chatHistoryService.sendChat(chatHistory);
+    }
 }
 

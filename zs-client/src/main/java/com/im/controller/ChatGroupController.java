@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/chatGroup")
-@Api("群聊控制器")
+@Api(tags = "群聊控制器")
 public class ChatGroupController {
 
     @Autowired

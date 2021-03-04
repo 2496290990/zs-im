@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/circleOss")
-@Api("动态文件")
+@Api(tags = "动态文件")
 public class CircleOssController {
 
 }

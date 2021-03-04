@@ -13,6 +13,9 @@
         <module>zs-server</module>
         <module>zs-client</module>
         <module>zs-generator</module>
+        <module>zs-security</module>
+        <module>common-base</module>
+        <module>common-base</module>
     </modules>
 
     <properties>
@@ -40,6 +43,7 @@
         <hutool.version>5.4.4</hutool.version>
         <nacos.version>2.2.0.RELEASE</nacos.version>
         <mp.version>3.1.1</mp.version>
+        <jwt.version>0.9.1</jwt.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -155,6 +159,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <!--jwt生成token工具-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
             </dependency>
 
             <!-- 公共资源池 -->

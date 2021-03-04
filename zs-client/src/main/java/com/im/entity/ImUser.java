@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.FieldFill;
@@ -15,6 +16,8 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * <p>
@@ -29,7 +32,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName("im_user")
 @ApiModel(value="User对象", description="用户信息表")
-public class User implements Serializable {
+public class ImUser implements Serializable,UserDetails {
 
 private static final long serialVersionUID=1L;
 
@@ -98,4 +101,28 @@ private static final long serialVersionUID=1L;
     private String by6;
 
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }

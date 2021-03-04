@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.im.mapper.UserMapper">
 
-    <select id="selectUserPageByLike" resultType="com.im.entity.User">
+    <select id="selectUserPageByLike" resultType="com.im.entity.ImUser">
         select *
         from im_user
     </select>
-    <select id="verifySameByRegisterSubject" resultType="com.im.entity.User">
+    <select id="verifySameByRegisterSubject" resultType="com.im.entity.ImUser">
         select  *
         from im_user tb
         where phone = #{subject}

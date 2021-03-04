@@ -1,14 +1,17 @@
 package com.im.common;
 
-import org.springframework.beans.factory.annotation.Value;
+/**
+ * @author zhaojinhui
+ * @date 2021/2/28 16:50
+ * @apiNote
+ */
+
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.util.Properties;
-
 
 /**
  * @author zhaojinhui
@@ -30,3 +33,4 @@ public class CommonConfig extends WebMvcAutoConfiguration {
         return mailSender;
     }
 }
+

@@ -16,6 +16,8 @@ public class SysUser {
     /** 用户账号 */
     private String account;
 
+    private String password;
+
     /** 头像地址 */
     private String url;
 

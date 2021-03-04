@@ -1,10 +1,13 @@
 package com.im.controller;
 
 
+import com.im.common.Result;
+import com.im.entity.GroupMember;
+import com.im.service.GroupMemberService;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -16,8 +19,24 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/groupMember")
-@Api("群成员")
+@Api(tags = "群成员")
 public class GroupMemberController {
+
+    @Autowired
+    private GroupMemberService groupMemberService;
+
+    @GetMapping("/query/{id}")
+    @ApiOperation(value = "查询群组成员")
+    public Result queryGroupMember(@PathVariable("id") String id){
+        return groupMemberService.queryGroupMember(id);
+    }
+
+
+    @PutMapping("/delMember")
+    @ApiOperation(value = "删除群成员")
+    public Result delMember(@RequestBody GroupMember groupMember){
+        return groupMemberService.delMember(groupMember);
+    }
 
 }
 

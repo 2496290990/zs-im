@@ -1,7 +1,12 @@
 package com.im.controller;
 
 
+import com.im.common.Result;
+import com.im.service.CircleOfFriendService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +21,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/circleOfFriend")
-@Api("朋友圈/动态")
+@Api(tags = "朋友圈/动态")
 public class CircleOfFriendController {
+
+    @Autowired
+    private CircleOfFriendService friendService;
+
+    @GetMapping("/query")
+    @ApiOperation(value = "查询最新的20条朋友圈")
+    public Result queryLast20Circles(){
+        return friendService.queryLast20Circles();
+    }
 
 }
 

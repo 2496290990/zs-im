@@ -1,0 +1,5 @@
+token:
+  # token失效时间 30分钟
+  expireTime: 1800000
+  # token生成的秘钥
+  privateKey: elevenZ

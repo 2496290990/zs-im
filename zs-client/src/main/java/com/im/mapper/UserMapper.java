@@ -2,10 +2,8 @@ package com.im.mapper;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.im.entity.User;
+import com.im.entity.ImUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.im.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * <p>
@@ -15,15 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author eleven
  * @since 2021-02-22
  */
-public interface UserMapper extends BaseMapper<User> {
+public interface UserMapper extends BaseMapper<ImUser> {
 
 
-    IPage<User> selectUserPageByLike(Page page, User user);
+    IPage<ImUser> selectUserPageByLike(Page page, ImUser imUser);
 
     /**
      * 根据注册账号查询是否被注册过
      * @param subject
      * @return
      */
-    User verifySameByRegisterSubject(String subject);
+    ImUser verifySameByRegisterSubject(String subject);
 }

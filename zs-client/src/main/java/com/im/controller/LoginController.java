@@ -1,13 +1,10 @@
 package com.im.controller;
 
 import com.im.common.Result;
-import com.im.entity.User;
+import com.im.entity.ImUser;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -16,12 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @apiNote
  */
 @RestController
-@RequestMapping("/login")
-@Api("登录")
+@Api(tags = "登录")
 public class LoginController {
 
-    @PostMapping("/sign")
-    public Result userSign(@RequestBody User user){
+    @PostMapping("/login")
+    public Result userSign(@RequestBody ImUser imUser){
+
         return null;
     }
+
+
 }

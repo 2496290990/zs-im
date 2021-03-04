@@ -1,4 +1,4 @@
-package com.im.util;
+package com.im.utils;
 
 import cn.hutool.core.date.ChineseDate;
 import cn.hutool.core.date.DateUtil;

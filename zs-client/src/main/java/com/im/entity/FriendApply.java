@@ -54,7 +54,7 @@ private static final long serialVersionUID=1L;
     private LocalDateTime updateTime;
 
     @ApiModelProperty(value = "更新人id")
-    private LocalDateTime updateBy;
+    private String updateBy;
 
     @ApiModelProperty(value = "0 拒绝 1 同意")
     private Integer state;

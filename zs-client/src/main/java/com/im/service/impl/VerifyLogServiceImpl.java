@@ -7,12 +7,11 @@ import com.im.entity.VerifyLog;
 import com.im.mapper.VerifyLogMapper;
 import com.im.service.VerifyLogService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.im.util.SnowFlake;
+import com.im.utils.SnowFlake;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * <p>

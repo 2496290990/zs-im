@@ -1,4 +1,4 @@
-package com.im.util;
+package com.im.utils;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RandomUtils;

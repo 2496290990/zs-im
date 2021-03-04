@@ -3,6 +3,8 @@ package com.im.mapper;
 import com.im.entity.MyFriend;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
  * <p>
  * 好友关系表 Mapper 接口
@@ -13,4 +15,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface MyFriendMapper extends BaseMapper<MyFriend> {
 
+    /**
+     * 根据当前登录人查询好友列表
+     * @param id 要查询的登录人的id
+     * @return
+     */
+    List<MyFriend> queryMyFriendByUserId(String id);
 }

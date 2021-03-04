@@ -1,10 +1,10 @@
 package com.im.service.impl;
 
 import com.im.entity.Email;
-import com.im.util.EmailUtil;
 import com.im.entity.Test;
 import com.im.mapper.RegisterMapper;
 import com.im.service.RegisterService;
+import com.im.utils.EmailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

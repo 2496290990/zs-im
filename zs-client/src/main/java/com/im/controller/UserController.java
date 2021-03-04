@@ -4,7 +4,7 @@ package com.im.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.im.common.Result;
-import com.im.entity.User;
+import com.im.entity.ImUser;
 import com.im.service.UserService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +23,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/user")
-@Api("用户管理")
+@Api(tags = "用户管理")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
     @GetMapping("/page")
-    public Result getPage(Page page, User user){
-        IPage<User> userPage =  userService.selectUserPageByLike(page,user);
+    public Result getPage(Page page, ImUser imUser){
+        IPage<ImUser> userPage =  userService.selectUserPageByLike(page, imUser);
         return new Result(userPage);
     }
 }

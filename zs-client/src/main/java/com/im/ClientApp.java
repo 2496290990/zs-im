@@ -19,4 +19,3 @@ public class ClientApp {
     }
 }
 
-//import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

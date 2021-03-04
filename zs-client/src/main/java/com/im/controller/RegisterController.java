@@ -1,14 +1,13 @@
 package com.im.controller;
 
-import cn.hutool.core.lang.Snowflake;
 import cn.hutool.core.util.StrUtil;
 import com.im.common.Result;
 import com.im.common.ResultFactory;
+import com.im.entity.ImUser;
 import com.im.entity.VerifyLog;
 import com.im.service.RegisterService;
 import com.im.service.UserService;
 import com.im.service.VerifyLogService;
-import com.im.util.SnowFlake;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +31,7 @@ public class RegisterController {
 
     @Autowired
     private VerifyLogService verifyLogService;
-    
+
     /**
      * 根据注册填写的手机号或者是邮箱，判断该账号是否已经注册过了
      * @param subject 要注册的账号主体
@@ -55,5 +54,11 @@ public class RegisterController {
             verifyLogService.saveEmailCode(verifyLog);
         }
         return ResultFactory.success(email);
+    }
+
+
+    @PostMapping("/register")
+    public Result registerUser(@RequestBody ImUser imUser){
+        return userService.registerUser(imUser);
     }
 }

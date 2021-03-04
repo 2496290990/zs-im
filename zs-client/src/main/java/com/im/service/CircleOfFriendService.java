@@ -1,5 +1,6 @@
 package com.im.service;
 
+import com.im.common.Result;
 import com.im.entity.CircleOfFriend;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface CircleOfFriendService extends IService<CircleOfFriend> {
 
+    /**
+     * 查询最新的20条动态信息
+     * @return
+     */
+    Result queryLast20Circles();
 }

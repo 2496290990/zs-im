@@ -1,17 +1,22 @@
 package com.im.filter;
 
+import cn.hutool.crypto.SecureUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.im.common.Result;
 import com.im.common.ResultFactory;
 import com.im.entity.SecurityUser;
 import com.im.entity.User;
+import com.im.security.DefaultPasswordEncoder;
 import com.im.security.TokenManager;
 import com.im.utils.ResponseUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -23,6 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author zhaojinhui
@@ -30,6 +36,7 @@ import java.util.Map;
  * @apiNote
  */
 public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
+
     private TokenManager tokenManager;
 
     private RedisTemplate redisTemplate;
@@ -46,7 +53,8 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try{
             User user = new ObjectMapper().readValue(request.getInputStream(), User.class);
-            return manager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(),new ArrayList<>()));
+            String md5 = SecureUtil.md5(SecureUtil.md5(user.getPassword()));
+            return manager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), md5 ,new ArrayList<>()));
         }catch(Exception e){
             e.printStackTrace();
             throw new RuntimeException("登录异常");
@@ -68,12 +76,19 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         SecurityUser user = (SecurityUser) authResult.getPrincipal();
         //根据用户名生成token
         String token = tokenManager.createToken(user.getCurrentUserInfo().getUsername());
+        String authorization = UUID.randomUUID().toString();
         //吧用户名称和权限信息放在redis token中
         redisTemplate.opsForValue()
                 .set(user.getCurrentUserInfo().getUsername(), user.getPermissionList());
+        Gson gson = new Gson();
+        redisTemplate.opsForValue()
+                .set(authorization,user);
+
+
         //返回token
         Map map = new HashMap<>(1);
         map.put("token", token);
+        map.put("Authorization", authorization);
         ResponseUtil.out(response, new Result(map));
     }
 
@@ -96,9 +111,9 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         this.manager = manager;
         this.setPostOnly(false);
         //设置登录路径和提交方式
-        this.setRequiresAuthenticationRequestMatcher(
+        /*this.setRequiresAuthenticationRequestMatcher(
             new AntPathRequestMatcher("/client/login","POST")
-        );
+        );*/
 
     }
 

@@ -3,8 +3,8 @@ package com.im.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.im.common.Result;
-import com.im.entity.ImUser;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.im.entity.ImUser;
 
 /**
  * <p>

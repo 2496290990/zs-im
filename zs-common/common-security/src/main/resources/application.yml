@@ -3,3 +3,6 @@ token:
   expireTime: 1800000
   # token生成的秘钥
   privateKey: elevenZ
+spring:
+  main:
+    allow-bean-definition-overriding: true

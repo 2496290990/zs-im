@@ -1,13 +1,16 @@
 package com.im.security;
 
 import cn.hutool.crypto.SecureUtil;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 /**
  * @author zhaojinhui
  * @date 2021/2/28 17:03
  * @apiNote
  */
+
 public class DefaultPasswordEncoder  implements PasswordEncoder {
 
     /**
@@ -28,6 +31,6 @@ public class DefaultPasswordEncoder  implements PasswordEncoder {
      */
     @Override
     public boolean matches(CharSequence charSequence, String encode) {
-        return encode.equals(SecureUtil.md5(charSequence.toString()));
+        return encode.equals(charSequence.toString());
     }
 }

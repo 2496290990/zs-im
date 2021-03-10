@@ -1,10 +1,14 @@
 package com.im.security;
 
 import com.im.entity.SysUser;
+import com.im.util.SpringUtil;
 import io.jsonwebtoken.CompressionCodecs;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
@@ -13,6 +17,7 @@ import java.util.Date;
  * @date 2021/2/28 17:03
  * @apiNote token 工具类 采用jwt生成token信息
  */
+@Component
 public class TokenManager {
     /** token的有效时长 30分钟 */
     //@Value("token.expireTime")
@@ -21,6 +26,8 @@ public class TokenManager {
     /** token 生成用的秘钥 */
     @Value("token.privateKey")
     private String PRIVATE_KEY;
+    @Autowired
+    private RedisTemplate redisTemplate ;//= SpringUtil.getBean(RedisTemplate.class);
 
     /**
      * 根据用户名生成token
@@ -43,13 +50,17 @@ public class TokenManager {
      * @return
      */
     public String getUserInfo(String token){
-        String userInfo = Jwts.parser()
-                .setSigningKey(PRIVATE_KEY)
+        /*String userInfo = Jwts.parser()
+                .setSigningKey("elevenZ")
                 .parseClaimsJws(token)
                 .getBody()
-                .getSubject();
+                .getSubject();*/
+        String userInfo = redisTemplate.opsForValue()
+                .get(token).toString();
         return userInfo;
     }
+
+
 
     /**
      * 移除token信息

@@ -2,14 +2,16 @@ package com.im.controller;
 
 
 import com.im.common.Result;
+import com.im.entity.CircleOfFriend;
 import com.im.service.CircleOfFriendService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * <p>
@@ -31,6 +33,18 @@ public class CircleOfFriendController {
     @ApiOperation(value = "查询最新的20条朋友圈")
     public Result queryLast20Circles(){
         return friendService.queryLast20Circles();
+    }
+
+    @GetMapping("/queryOwn")
+    @ApiOperation(value = "查询自己的朋友圈")
+    public Result queryOwnCircle(CircleOfFriend friend){
+        return friendService.queryOwnCircle(friend);
+    }
+
+    @PostMapping
+    @ApiOperation(value = "发朋友圈")
+    public Result insertNew(CircleOfFriend circleOfFriend, List<MultipartFile> files) throws IOException {
+        return friendService.insertNew(circleOfFriend,files);
     }
 
 }

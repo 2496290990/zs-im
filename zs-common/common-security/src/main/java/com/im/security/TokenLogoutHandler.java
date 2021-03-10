@@ -15,10 +15,8 @@ import javax.servlet.http.HttpServletResponse;
  * @apiNote 用户退出并删除token信息
  */
 public class TokenLogoutHandler implements LogoutHandler {
-    @Autowired
     private RedisTemplate redisTemplate;
 
-    @Autowired
     private TokenManager tokenManager;
 
     public TokenLogoutHandler(TokenManager tokenManager,RedisTemplate redisTemplate){

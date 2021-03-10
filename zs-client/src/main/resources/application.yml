@@ -18,6 +18,10 @@ spring:
     user:
       name: admin
       password: admin
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 10MB
 mybatis-plus:
   configuration:
     call-setters-on-nulls: true

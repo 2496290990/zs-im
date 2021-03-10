@@ -1,10 +1,8 @@
 package com.im.controller;
 
-import com.im.common.Result;
-import com.im.entity.ImUser;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -16,11 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "登录")
 public class LoginController {
 
-    @PostMapping("/login")
-    public Result userSign(@RequestBody ImUser imUser){
+    @Autowired
+    private UserDetailsService userDetailsService;
 
+   /* @PostMapping("/login")
+    public Result login(@RequestBody ImUser user){
+        UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
         return null;
-    }
-
-
+    }*/
 }

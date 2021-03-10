@@ -18,6 +18,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         this.setFieldValByName("createTime", LocalDateTime.now(), metaObject);
+        this.setFieldValByName("delFlag", "1", metaObject);
     }
 
     @Override

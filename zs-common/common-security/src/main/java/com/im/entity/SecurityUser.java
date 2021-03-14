@@ -1,7 +1,5 @@
 package com.im.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -14,7 +12,7 @@ import java.util.List;
  * @apiNote
  */
 
-public class SecurityUser extends org.springframework.security.core.userdetails.User implements UserDetails {
+public class SecurityUser implements UserDetails {
 
     private transient  ImUser currentUserInfo;
 
@@ -26,14 +24,6 @@ public class SecurityUser extends org.springframework.security.core.userdetails.
 
     private Collection<? extends GrantedAuthority> authorities;
 
-
-    public SecurityUser(String username, String password,
-                Collection<? extends GrantedAuthority> authorities) {
-        super(username, password, authorities);
-        this.username = username;
-        this.password = password;
-        this.authorities = authorities;
-    }
 
 
     @Override

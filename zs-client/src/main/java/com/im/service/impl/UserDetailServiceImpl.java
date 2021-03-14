@@ -39,11 +39,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("用户名不存在");
         }
         List<GrantedAuthority> auth = AuthorityUtils.commaSeparatedStringToAuthorityList("user");
-        SecurityUser securityUser = new SecurityUser(sysUser.getUsername(),
-                passwordEncoder.encode(sysUser.getPassword()),
-                auth);
-        securityUser.setCurrentUserInfo(sysUser);
-        securityUser.setAuthorities(auth);
-        return securityUser;
+        return null;
     }
 }

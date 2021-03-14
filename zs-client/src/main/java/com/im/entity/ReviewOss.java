@@ -1,37 +1,31 @@
 package com.im.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- * 朋友圈文件表
- * </p>
- *
- * @author eleven
- * @since 2021-02-22
+ * @author zhaojinhui
+ * @date 2021/3/14 16:44
+ * @apiNote
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
-@TableName("im_circle_oss")
-@ApiModel(value="CircleOss对象", description="朋友圈文件表")
-public class CircleOss implements Serializable {
+@AllArgsConstructor
+@NoArgsConstructor
+@TableName("im_review_oss")
+public class ReviewOss {
 
-private static final long serialVersionUID=1L;
+    private static final Long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "主键id")
     private String id;
 
-    @ApiModelProperty(value = "动态id")
-    private String circleId;
+    @ApiModelProperty(value = "评论的id")
+    private String reviewId;
 
     @ApiModelProperty(value = "排序字段")
     private Integer sort;
@@ -43,6 +37,9 @@ private static final long serialVersionUID=1L;
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
 
+    @ApiModelProperty(value = "创建人")
+    private String createBy;
+
     @ApiModelProperty(value = "0删除1正常")
     @TableLogic
     private String delFlag;
@@ -50,6 +47,9 @@ private static final long serialVersionUID=1L;
     @ApiModelProperty(value = "更新时间")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime updateTime;
+
+    @ApiModelProperty(value = "更新人")
+    private String updateBy;
 
     private String by1;
 
@@ -59,7 +59,8 @@ private static final long serialVersionUID=1L;
 
     private String by4;
 
-    private String by5;
+
+
 
 
 }

@@ -28,7 +28,6 @@ public class VerifyLog implements Serializable {
 private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = " 主键id")
-    @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
     @ApiModelProperty(value = "注册的邮箱或者是手机号")

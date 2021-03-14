@@ -9,7 +9,6 @@ import com.im.security.UnauthHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -59,7 +58,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login","/login.html").permitAll()
                 .antMatchers("/circleOfFriend/**").permitAll()
-                .antMatchers("/**").authenticated()
+                .antMatchers("/**/**").permitAll()
+//                .antMatchers("/**").authenticated()
                 .anyRequest().authenticated()
                 .and().logout().logoutUrl("/client/logout")
                 .addLogoutHandler(new TokenLogoutHandler(tokenManager, redisTemplate))

@@ -33,7 +33,6 @@ public class ChatHistory implements Serializable {
 private static final long serialVersionUID=1L;
 
     @ApiModelProperty(value = "主键")
-    @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
     @ApiModelProperty(value = "发送者id")
